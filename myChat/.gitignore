@@ -9,6 +9,10 @@
 
 # dependencies
 /node_modules
+.vs/myChat/v16/.suo
+.vs/slnx.sqlite
+.vs/*
+.vs
 
 # profiling files
 chrome-profiler-events*.json
