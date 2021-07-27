@@ -5,7 +5,7 @@ import { HttpClient, HttpRequest, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DbService {
-  url = 'https://087854d810ff.ngrok.io';
+  url = 'http://2680ed3c277f.ngrok.io';
   myArray: Array<any> = [];
   constructor(public http: HttpClient) { }
 

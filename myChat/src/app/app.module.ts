@@ -11,13 +11,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { WebsocketService } from './websocket.service';
+import { EntrarComponent } from './entrar/entrar.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
+//const config: SocketIoConfig = { url: 'http://localhost:4200', options: {} };
 
 @NgModule({
   declarations: [
     AppComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    EntrarComponent
   ],
   imports: [
     BrowserModule,
@@ -29,9 +35,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatButtonModule,
     HttpClientModule,
     FormsModule,
+    MatTooltipModule,
+    //SocketIoModule.forRoot(config),
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [WebsocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

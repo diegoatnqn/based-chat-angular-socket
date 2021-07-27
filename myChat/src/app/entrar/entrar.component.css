@@ -1,0 +1,12 @@
+.container {
+  margin: 2rem auto;
+  background-color: dodgerblue;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+button {
+  font-style: oblique;
+  border: 1px solid #0000008a;
+  margin: .5rem;
+  background-color: aliceblue;
+}

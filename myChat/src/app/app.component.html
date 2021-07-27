@@ -4,7 +4,15 @@
   <mat-toolbar>
     <span>My Application de Chat</span>
   </mat-toolbar>
-<app-principal></app-principal>
+  
+<app-principal *ngIf="mostrarChat"
+               (miMensaje)="enviar($event)"
+               ></app-principal>
+
+<app-entrar *ngIf="!mostrarChat"
+            (iniciar)="iniciar($event)"
+            ></app-entrar>
+
 <!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->

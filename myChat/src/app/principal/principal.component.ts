@@ -1,43 +1,48 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { DbService } from '../db.service';
+import { Component, OnInit,Input, Output, EventEmitter, ViewChild, ElementRef, AfterViewChecked, ChangeDetectionStrategy } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
   styleUrls: ['./principal.component.css']
 })
-export class PrincipalComponent implements OnInit {
-  mimsg: FormControl = new FormControl();
+export class PrincipalComponent implements OnInit, AfterViewChecked{
+  mimsg: FormControl = new FormControl(""); 
   misMensajes: Array<Object> = [];
+  @ViewChild('container')
+    private myScrollContainer!: ElementRef;   //Elemento de HTML que asigno a variable
+
+  @Output() miMensaje: EventEmitter<string> = new EventEmitter();   //declaro event emmiter que envia señal a padre
+    personasConectadas: number=0;
   
-  constructor(public db: DbService) { }
-  
+  constructor() { }
 
   ngOnInit(): void {
-  }
+    }
 
   chat() {
-    const nuevo = {
-      texto: this.mimsg.value
-    };
+    this.miMensaje.emit(this.mimsg.value);  //envío el valor del mensaje de chat
+    this.mimsg.reset("");
+  }
+  ngAfterViewChecked() {
+    this.scrollToBottom();    //En cada cambio, mando para abajo el chat
+  }
 
-    this.db.enviar(nuevo).subscribe((data) => {
-      console.log(data);
-      this.actualizar();
-    });
+  scrollToBottom(): void {
+    try {
+      this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+    } catch (err) { }
+  }
+
+  actualizar(data: string) {
+    this.misMensajes.push(data);
     
   }
-    actualizar() {
-      this.db.obtener().subscribe((data) => {
-        console.log(data);
-        let recibido = data["mensajes"];
-        this.misMensajes.push(recibido.pop().texto);
-        });
-    }
 
   clearChat() {
     this.misMensajes = [];
-    this.db.vaciar().subscribe();
+  }
+  numeroConectados(numeroActual:number) {
+    this.personasConectadas = numeroActual;
   }
 }

@@ -1,21 +1,26 @@
 <mat-card class="example-card">
-  <mat-card-header>
+  <mat-card-header  matTooltip="Info about the action"
+        aria-label="Button that displays a tooltip when focused or hovered over">
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>Chat and style</mat-card-title>
     <mat-card-subtitle>By Diegodia</mat-card-subtitle>
+    <mat-card-subtitle style="float:right">{{personasConectadas}} online</mat-card-subtitle>
   </mat-card-header>
-  
+
   <mat-card-content>
-    <div class="container">
-      <p *ngFor="let ultimoMensaje of this.misMensajes">
-        {{ultimoMensaje}}
+    <div class="container" #container>
+
+      <p *ngFor="let u of misMensajes">
+        {{u}}
       </p>
+
     </div>
     <form class="example-form">
       <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Message</mat-label>
-          <textarea matInput #message [formControl]="mimsg" ></textarea>
-        <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
+        <mat-label>Ingrese su mensaje</mat-label>
+        <textarea matInput #message [formControl]="mimsg"></textarea> <br />
+
+        <mat-hint align="start"><strong>No ingresar datos personales</strong> </mat-hint>
         <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
       </mat-form-field>
     </form>
@@ -25,3 +30,4 @@
     <button mat-button (click)="chat()">Enviar</button>
   </mat-card-actions>
 </mat-card>
+<!-- Gracias: https://csharpcode.org/blog/angular-scroll-to-bottom-chat-application-fixed/ -->
