@@ -15,6 +15,8 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { WebsocketService } from './websocket.service';
 import { EntrarComponent } from './entrar/entrar.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDividerModule } from '@angular/material/divider';
+
 
 
 //const config: SocketIoConfig = { url: 'http://localhost:4200', options: {} };
@@ -36,6 +38,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     HttpClientModule,
     FormsModule,
     MatTooltipModule,
+    MatDividerModule,
     //SocketIoModule.forRoot(config),
     ReactiveFormsModule
   ],

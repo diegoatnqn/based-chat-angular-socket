@@ -25,24 +25,23 @@ export class AppComponent implements OnInit, OnDestroy {
     this.socketService.setupSocketConnection();
 
     this.socketService.socket.on('my broadcast', (data: string) => {
-      console.log(data);
-      this.alertChild.actualizar(data);
+      this.alertChild.actualizar(data);   //usu metodo de mi hijo "principalcomponent" y le paso lo que recibo
     });
 
     this.socketService.socket.on('current-users', (data: number) => {
-      this.alertChild.numeroConectados(data);
+      this.alertChild.numeroConectados(data); //usu metodo de mi hijo "principalcomponent" y le paso lo que recibo
     })
   }
   ngOnDestroy() {
     this.socketService.disconnect();
   }
   enviar(mensaje: any) {
-    this.socketService.socket.emit('message', mensaje);
+    this.socketService.socket.emit('message', mensaje); //emito mensaje recibido a backend
   }
 
   iniciar(datosUser: any) {
     var data = { name: datosUser, userId: this.socketService.socket.id };
-    this.socketService.socket.emit('setSocketId', data);
-    this.mostrarChat = !this.mostrarChat;
+    this.socketService.socket.emit('setSocketId', data);    //Una vez puse el nombre, emito a backend
+    this.mostrarChat = !this.mostrarChat;                   //Y muestro nombre
   }
 }

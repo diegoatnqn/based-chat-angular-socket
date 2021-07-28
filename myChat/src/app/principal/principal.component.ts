@@ -8,7 +8,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 })
 export class PrincipalComponent implements OnInit, AfterViewChecked{
   mimsg: FormControl = new FormControl(""); 
-  misMensajes: Array<Object> = [];
+  misMensajes: Array<any> = [];
   @ViewChild('container')
     private myScrollContainer!: ElementRef;   //Elemento de HTML que asigno a variable
 
