@@ -14,8 +14,12 @@ export class WebsocketService {
   constructor() { }
 
   setupSocketConnection() {
-    this.socket = io(environment.SOCKET_ENDPOINT);
+    this.socket = io(environment.SOCKET_ENDPOINT, {
+      withCredentials: true
+    })
   }
+
+  
   
   disconnect() {
     if (this.socket) {
