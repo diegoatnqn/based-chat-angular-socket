@@ -1,9 +1,11 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
 <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-  <mat-toolbar>
-    <span>Mi aplicación de Chat</span>
-  </mat-toolbar>
+<mat-toolbar>
+  <span>Mi aplicación de Chat</span>
+  <span class="example-spacer"></span>
+  <a class="link-toolbar" href="https://github.com/diegoatnqn/based-chat-angular-socket" target="_blank"><mat-icon>grade</mat-icon></a>
+</mat-toolbar>
   
 <app-principal *ngIf="mostrarChat"
                (miMensaje)="enviar($event)"
