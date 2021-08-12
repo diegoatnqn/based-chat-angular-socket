@@ -16,7 +16,9 @@ import { WebsocketService } from './websocket.service';
 import { EntrarComponent } from './entrar/entrar.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatIconModule } from '@angular/material/icon'
+import { MatIconModule } from '@angular/material/icon';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment'
 
 
 
@@ -42,7 +44,13 @@ import { MatIconModule } from '@angular/material/icon'
     MatDividerModule,
     MatIconModule,
     //SocketIoModule.forRoot(config),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerImmediately'
+    })
   ],
   providers: [WebsocketService],
   bootstrap: [AppComponent]
