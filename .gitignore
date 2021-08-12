@@ -1,5 +1,4 @@
 /node_modules
 /.vs
-backend/*
-/backend
-/myChat/backend
+.vs/
+.vs/*
